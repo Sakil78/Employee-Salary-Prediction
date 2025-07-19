@@ -1,0 +1,40 @@
+{
+  "plots_available": [
+    {
+      "name": "actual_vs_predicted",
+      "title": "Actual vs Predicted Salary",
+      "description": "Scatter plot showing model prediction accuracy",
+      "file": "actual_vs_predicted.png"
+    },
+    {
+      "name": "residuals",
+      "title": "Residuals Analysis",
+      "description": "Error distribution analysis",
+      "file": "residuals_plot.png"
+    },
+    {
+      "name": "feature_importance",
+      "title": "Feature Importance",
+      "description": "Most influential features for salary prediction",
+      "file": "feature_importance.png"
+    },
+    {
+      "name": "model_comparison",
+      "title": "Model Performance",
+      "description": "Comparison of different ML algorithms",
+      "file": "model_comparison.png"
+    },
+    {
+      "name": "salary_distribution",
+      "title": "Salary Distribution",
+      "description": "Distribution of salaries in the dataset",
+      "file": "salary_distribution.png"
+    },
+    {
+      "name": "experience_vs_salary",
+      "title": "Experience vs Salary",
+      "description": "Relationship between experience and salary",
+      "file": "experience_vs_salary.png"
+    }
+  ]
+}

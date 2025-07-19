@@ -1,0 +1,41 @@
+{
+  "Gender": [
+    "Female",
+    "Male"
+  ],
+  "Job_Type": [
+    "Consulting & Advisory",
+    "Data & Analytics",
+    "Finance & Accounting",
+    "Human Resources",
+    "Management & Leadership",
+    "Marketing & Communications",
+    "Operations & Logistics",
+    "Other",
+    "Sales & Business Development",
+    "Technology & Engineering"
+  ],
+  "Job_Rank": [
+    "C-Level Executive",
+    "Director/VP Level",
+    "Entry Level",
+    "Junior Professional",
+    "Manager/Lead",
+    "Mid-Level Professional",
+    "Senior Professional"
+  ],
+  "Experience_Level": [
+    "Entry Level (0-1 years)",
+    "Executive (>20 years)",
+    "Junior (2-3 years)",
+    "Lead/Principal (13-20 years)",
+    "Mid-Level (4-7 years)",
+    "Senior (8-12 years)"
+  ],
+  "Education_Level_Clean": [
+    "Bachelor's",
+    "High School",
+    "Master's",
+    "PhD"
+  ]
+}

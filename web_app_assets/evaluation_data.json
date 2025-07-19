@@ -1,0 +1,104 @@
+{
+  "model_performance": {
+    "r2_score": 0.920682698016899,
+    "r2_percentage": 92.0682698016899,
+    "rmse": 27280.00563211494,
+    "mae": 8252.258779593085,
+    "accuracy_description": "92.1% accuracy"
+  },
+  "sample_predictions": [
+    {
+      "id": 1,
+      "role": "Software Engineer",
+      "age": 28,
+      "experience": 5,
+      "gender": "Male",
+      "job_type": "Technology & Engineering",
+      "predicted_monthly": 39081.59798412698,
+      "predicted_annual": 468979.1758095238
+    },
+    {
+      "id": 2,
+      "role": "Data Scientist",
+      "age": 32,
+      "experience": 8,
+      "gender": "Female",
+      "job_type": "Data & Analytics",
+      "predicted_monthly": 88536.65827044523,
+      "predicted_annual": 1062439.8992453427
+    },
+    {
+      "id": 3,
+      "role": "Manager",
+      "age": 42,
+      "experience": 15,
+      "gender": "Male",
+      "job_type": "Management & Leadership",
+      "predicted_monthly": 50441.5677163531,
+      "predicted_annual": 605298.8125962372
+    },
+    {
+      "id": 4,
+      "role": "Financial Analyst",
+      "age": 35,
+      "experience": 10,
+      "gender": "Female",
+      "job_type": "Finance & Accounting",
+      "predicted_monthly": 88524.11827044522,
+      "predicted_annual": 1062289.4192453427
+    },
+    {
+      "id": 5,
+      "role": "Marketing Specialist",
+      "age": 26,
+      "experience": 3,
+      "gender": "Male",
+      "job_type": "Marketing & Communications",
+      "predicted_monthly": 25869.606187123034,
+      "predicted_annual": 310435.2742454764
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "Years of Experience",
+      "importance": 0.4704083363552469,
+      "percentage": 47.04083363552469
+    },
+    {
+      "feature": "Job_Type",
+      "importance": 0.20372987412762206,
+      "percentage": 20.372987412762207
+    },
+    {
+      "feature": "Job_Rank",
+      "importance": 0.1734913597712624,
+      "percentage": 17.349135977126238
+    },
+    {
+      "feature": "Age",
+      "importance": 0.09447246449176931,
+      "percentage": 9.447246449176932
+    },
+    {
+      "feature": "Education_Level_Clean",
+      "importance": 0.03018684630770516,
+      "percentage": 3.018684630770516
+    },
+    {
+      "feature": "Experience_Level",
+      "importance": 0.018455159507625652,
+      "percentage": 1.8455159507625651
+    },
+    {
+      "feature": "Gender",
+      "importance": 0.009255959438768469,
+      "percentage": 0.9255959438768468
+    }
+  ],
+  "data_info": {
+    "total_samples": 9670,
+    "training_samples": 7736,
+    "test_samples": 1934,
+    "features_count": 7
+  }
+}

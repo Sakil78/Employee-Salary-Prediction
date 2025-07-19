@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💼 Salary Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="main-container">
+            <!-- Header Section -->
+            <div class="header-section">
+                <h1><i class="fas fa-chart-line"></i> 💼 Salary Predictor</h1>
+                <p>Advanced ML-Based Employee Salary Prediction System</p>
+                <p class="mt-3"><small>🎓 Professional ML Project • Powered by Random Forest Algorithm</small></p>
+            </div>
+
+            <!-- Form Section -->
+            <div class="form-section">
+                <h2 class="section-title"><i class="fas fa-user-tie feature-icon"></i>Employee Information</h2>
+                <form id="predictionForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="age" class="form-label">
+                                <i class="fas fa-birthday-cake feature-icon"></i>Age
+                            </label>
+                            <input type="number" class="form-control" id="age" name="age" min="18" max="65" required placeholder="Enter age (18-65)">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="experience" class="form-label">
+                                <i class="fas fa-briefcase feature-icon"></i>Years of Experience
+                            </label>
+                            <input type="number" class="form-control" id="experience" name="experience" min="0" max="40" required placeholder="Years of experience">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="gender" class="form-label">
+                                <i class="fas fa-venus-mars feature-icon"></i>Gender
+                            </label>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                {% for option in feature_options['Gender'] %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="job_type" class="form-label">
+                                <i class="fas fa-industry feature-icon"></i>Job Type
+                            </label>
+                            <select class="form-select" id="job_type" name="job_type" required>
+                                <option value="">Select Job Type</option>
+                                {% for option in feature_options['Job_Type'] %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="job_rank" class="form-label">
+                                <i class="fas fa-medal feature-icon"></i>Job Rank
+                            </label>
+                            <select class="form-select" id="job_rank" name="job_rank" required>
+                                <option value="">Select Job Rank</option>
+                                {% for option in feature_options['Job_Rank'] %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="experience_level" class="form-label">
+                                <i class="fas fa-star feature-icon"></i>Experience Level
+                                <small class="text-muted">(Auto-selected based on years of experience)</small>
+                            </label>
+                            <select class="form-select" id="experience_level" name="experience_level" required>
+                                <option value="">Select Experience Level</option>
+                                {% for option in feature_options['Experience_Level'] %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 mb-4">
+                            <label for="education_level" class="form-label">
+                                <i class="fas fa-graduation-cap feature-icon"></i>Education Level
+                            </label>
+                            <select class="form-select" id="education_level" name="education_level" required>
+                                <option value="">Select Education Level</option>
+                                {% for option in feature_options['Education_Level_Clean'] %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-predict">
+                            <i class="fas fa-calculator"></i> Predict Salary
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="result" class="prediction-result" style="display: none;">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-money-bill-wave"></i> Predicted Salary
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="salary-card">
+                                <h5><i class="fas fa-calendar-month"></i> Monthly Salary</h5>
+                                <div class="salary-amount" id="monthly-salary"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="salary-card">
+                                <h5><i class="fas fa-calendar-year"></i> Annual Salary</h5>
+                                <div class="salary-amount" id="annual-salary"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <small><i class="fas fa-info-circle"></i> Prediction based on AI/ML Random Forest model trained on employee data</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Performance Section -->
+            <div class="detailed-evaluation-section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>📊 Detailed Model Evaluation
+                </h2>
+                
+                <!-- Performance Metrics -->
+                <div class="row mb-4">
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="metric-card">
+                            <div class="metric-value">{{ (model_metadata.model_performance.r2_score * 100)|round(1) }}%</div>
+                            <div class="metric-label">
+                                <i class="fas fa-bullseye"></i> Accuracy (R² Score)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="metric-card">
+                            <div class="metric-value">₹{{ "{:,.0f}".format(model_metadata.model_performance.rmse) }}</div>
+                            <div class="metric-label">
+                                <i class="fas fa-ruler"></i> RMSE
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="metric-card">
+                            <div class="metric-value">₹{{ "{:,.0f}".format(model_metadata.model_performance.mae) }}</div>
+                            <div class="metric-label">
+                                <i class="fas fa-calculator"></i> MAE
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="metric-card">
+                            <div class="metric-value">{{ "{:,}".format(model_metadata.training_data_info.total_samples) }}</div>
+                            <div class="metric-label">
+                                <i class="fas fa-database"></i> Training Data
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Predictions Table -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h4 class="text-center mb-3"><i class="fas fa-table"></i> 📊 Model Evaluation Table</h4>
+                        <p class="text-center text-light mb-4">Showing sample predictions • Comparing model accuracy across different profiles</p>
+                        <div class="table-responsive">
+                            <table class="table table-striped evaluation-table">
+                                <thead>
+                                    <tr>
+                                        <th><i class="fas fa-user-tie"></i> Role</th>
+                                        <th><i class="fas fa-birthday-cake"></i> Age</th>
+                                        <th><i class="fas fa-briefcase"></i> Experience</th>
+                                        <th><i class="fas fa-venus-mars"></i> Gender</th>
+                                        <th><i class="fas fa-industry"></i> Job Type</th>
+                                        <th><i class="fas fa-calendar-month"></i> Monthly Salary</th>
+                                        <th><i class="fas fa-calendar-year"></i> Annual Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for sample in evaluation_data.sample_predictions %}
+                                    <tr>
+                                        <td><strong>{{ sample.role }}</strong></td>
+                                        <td>{{ sample.age }}</td>
+                                        <td>{{ sample.experience }} years</td>
+                                        <td>{{ sample.gender }}</td>
+                                        <td><small>{{ sample.job_type }}</small></td>
+                                        <td><strong>₹{{ "{:,.0f}".format(sample.predicted_monthly) }}</strong></td>
+                                        <td><strong>₹{{ "{:,.0f}".format(sample.predicted_annual) }}</strong></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualization Plots -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="text-center mb-3"><i class="fas fa-chart-bar"></i> Model Visualizations</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="plot-card">
+                                    <h6>Actual vs Predicted</h6>
+                                    <img src="{{ url_for('static', filename='plots/actual_vs_predicted.png') }}" 
+                                         alt="Actual vs Predicted" class="img-fluid plot-image">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="plot-card">
+                                    <h6>Feature Importance</h6>
+                                    <img src="{{ url_for('static', filename='plots/feature_importance.png') }}" 
+                                         alt="Feature Importance" class="img-fluid plot-image">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="plot-card">
+                                    <h6>Residuals Analysis</h6>
+                                    <img src="{{ url_for('static', filename='plots/residuals_plot.png') }}" 
+                                         alt="Residuals Plot" class="img-fluid plot-image">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="plot-card">
+                                    <h6>Model Comparison</h6>
+                                    <img src="{{ url_for('static', filename='plots/model_comparison.png') }}" 
+                                         alt="Model Comparison" class="img-fluid plot-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Performance Section -->
+            <div class="performance-section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line feature-icon"></i>Model Performance
+                </h2>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h3 text-success">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <h5>R² Score</h5>
+                            <div class="performance-value">{{ model_metadata.model_performance.r2_score|round(4) }}</div>
+                            <p class="text-muted">Model Accuracy: {{ (model_metadata.model_performance.r2_score * 100)|round(2) }}%</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h3 text-info">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h5>RMSE</h5>
+                            <div class="performance-value">₹{{ "{:,.0f}".format(model_metadata.model_performance.rmse) }}</div>
+                            <p class="text-muted">Root Mean Square Error</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h3 text-warning">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h5>Training Data</h5>
+                            <div class="performance-value">{{ "{:,}".format(model_metadata.training_data_info.total_samples) }}</div>
+                            <p class="text-muted">Employee Records</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="section-title">
+                    <i class="fas fa-robot feature-icon"></i>📊 Model Performance
+                </h2>
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h4 text-primary">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h5 class="text-dark">Machine Learning</h5>
+                            <p class="text-muted">Random Forest Algorithm for accurate salary predictions</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h4 text-success">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h5 class="text-dark">High Accuracy</h5>
+                            <p class="text-muted">{{ (model_metadata.model_performance.r2_score * 100)|round(1) }}% R² Score</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h4 text-info">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h5 class="text-dark">Training Data</h5>
+                            <p class="text-muted">{{ "{:,}".format(model_metadata.training_data_info.total_samples) }} employee records</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <div class="performance-card">
+                            <div class="h4 text-warning">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h5 class="text-dark">RMSE</h5>
+                            <p class="text-muted">₹{{ "{:,.0f}".format(model_metadata.model_performance.rmse) }}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <h6><i class="fas fa-tags feature-icon"></i>Key Features Analyzed:</h6>
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col-lg-2 col-md-3 col-6 mb-2">
+                            <span class="badge bg-primary p-2">
+                                <i class="fas fa-user"></i> Age & Experience
+                            </span>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-2">
+                            <span class="badge bg-success p-2">
+                                <i class="fas fa-briefcase"></i> Job Type
+                            </span>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-2">
+                            <span class="badge bg-info p-2">
+                                <i class="fas fa-medal"></i> Job Rank
+                            </span>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-2">
+                            <span class="badge bg-warning p-2">
+                                <i class="fas fa-graduation-cap"></i> Education
+                            </span>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-2">
+                            <span class="badge bg-danger p-2">
+                                <i class="fas fa-venus-mars"></i> Gender
+                            </span>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-2">
+                            <span class="badge bg-dark p-2">
+                                <i class="fas fa-layer-group"></i> Categories
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="mt-5 py-4 text-center bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-chart-line"></i> Salary Prediction System</h5>
+                    <p class="mb-0">AI-Powered Employee Compensation Analysis</p>
+                </div>
+                <div class="col-md-6">
+                    <h6>Powered by Machine Learning</h6>
+                    <p class="mb-0">
+                        <i class="fas fa-robot"></i> Random Forest Algorithm • 
+                        <i class="fas fa-bullseye"></i> 92.07% Accuracy • 
+                        <i class="fas fa-database"></i> 9,670 Records
+                    </p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0">
+                        <i class="fas fa-copyright"></i> 2024 Employee Salary Prediction | 
+                        Built with <i class="fas fa-heart text-danger"></i> using Flask & Bootstrap
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

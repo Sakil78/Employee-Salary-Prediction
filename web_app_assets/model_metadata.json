@@ -1,0 +1,39 @@
+{
+  "model_type": "RandomForestRegressor",
+  "features_used": [
+    "Age",
+    "Years of Experience",
+    "Gender",
+    "Job_Type",
+    "Job_Rank",
+    "Experience_Level",
+    "Education_Level_Clean"
+  ],
+  "categorical_features": [
+    "Gender",
+    "Job_Type",
+    "Job_Rank",
+    "Experience_Level",
+    "Education_Level_Clean"
+  ],
+  "numerical_features": [
+    "Age",
+    "Years of Experience"
+  ],
+  "model_performance": {
+    "r2_score": 0.920682698016899,
+    "rmse": 27280.00563211494,
+    "mae": 8252.258779593085
+  },
+  "training_data_info": {
+    "total_samples": 9670,
+    "training_samples": 7736,
+    "test_samples": 1934
+  },
+  "salary_stats": {
+    "min_salary": 6049.0,
+    "max_salary": 1723101.0,
+    "mean_salary": 96015.44260599793,
+    "median_salary": 62926.5
+  }
+}

@@ -1,0 +1,514 @@
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.1) 0%, rgba(240, 147, 251, 0.1) 100%);
+    z-index: -1;
+}
+
+.main-container {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    overflow: visible;
+    margin: 0 auto;
+    max-width: 1200px;
+    backdrop-filter: none;
+    border: none;
+}
+
+.header-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    color: #ffffff;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.header-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%);
+    z-index: 1;
+}
+
+.header-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.header-section h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.header-section p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    margin-bottom: 0;
+    color: #f8f9fa;
+    font-weight: 300;
+}
+
+.form-section {
+    padding: 50px 40px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5f7fa 50%, #c3cfe2 100%);
+    border-radius: 15px;
+    margin-bottom: 40px;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 15px 18px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    backdrop-filter: blur(10px);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25);
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    outline: none;
+}
+
+.btn-predict {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 18px 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-predict:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    color: white;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 50%, #f093fb 100%);
+}
+
+.prediction-result {
+    background: linear-gradient(135deg, #50c878 0%, #20b2aa 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(32, 178, 170, 0.3);
+}
+
+.salary-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 15px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.salary-amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 15px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.detailed-evaluation-section {
+    background: rgba(255, 255, 255, 0.1);
+    color: #2d2d2d;
+    border-radius: 22px;
+    margin-bottom: 44px;
+    box-shadow: 0 10px 36px rgba(80, 120, 180, 0.10);
+    position: relative;
+    padding: 54px 40px;
+}
+.detailed-evaluation-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(251, 194, 235, 0.07);
+    z-index: 1;
+}
+.detailed-evaluation-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Info and Performance sections */
+.info-section, .performance-section {
+    padding: 54px 40px;
+    border-radius: 22px;
+    margin-bottom: 44px;
+    color: #1a3a4a;
+    box-shadow: 0 10px 36px rgba(80, 120, 180, 0.10);
+}
+
+.performance-section {
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    color: #2d2d2d;
+    border-radius: 22px;
+    margin-bottom: 44px;
+    box-shadow: 0 10px 36px rgba(80, 120, 180, 0.10);
+    position: relative;
+    padding: 54px 40px;
+}
+
+.performance-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 144, 226, 0.05);
+    z-index: 1;
+}
+
+.performance-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.info-section {
+    background: linear-gradient(135deg, #4a90e2 0%, #50c878 50%, #20b2aa 100%);
+    color: #2d2d2d;
+    border-radius: 22px;
+    margin-bottom: 44px;
+    box-shadow: 0 10px 36px rgba(200, 200, 255, 0.10);
+}
+
+.performance-card {
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 8px 28px rgba(120, 120, 180, 0.08);
+    transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    height: 100%;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(200, 200, 255, 0.13);
+}
+
+.performance-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 12px 32px rgba(120, 120, 180, 0.13);
+}
+
+.performance-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 15px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.performance-label {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    margin-top: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Metric cards */
+.metric-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    padding: 28px;
+    border: 1px solid rgba(200, 200, 255, 0.13);
+    transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(120, 120, 180, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+.metric-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(120, 120, 180, 0.13);
+    border-color: #4a90e2;
+    background: rgba(255, 255, 255, 1);
+}
+
+.metric-value {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+}
+
+.metric-label {
+    font-size: 0.95rem;
+    color: #34495e;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}
+
+/* Evaluation table */
+.evaluation-table {
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 36px rgba(120, 120, 180, 0.10);
+    margin: 44px 0;
+    border: 1px solid #dee2e6;
+}
+
+.evaluation-table th {
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    color: #2d2d2d;
+    border: none;
+    font-weight: 700;
+    padding: 16px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-size: 1.08rem;
+}
+
+.evaluation-table td {
+    color: #495057;
+    border: none;
+    padding: 13px 18px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.01rem;
+}
+
+.evaluation-table tbody tr:nth-child(even) {
+    background: #f4f7fb;
+}
+
+.evaluation-table tbody tr:hover {
+    background: #e3eafc;
+    transition: background-color 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+/* Plot cards */
+.plot-card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid #dee2e6;
+    transition: all 0.25s cubic-bezier(.4,0,.2,1);
+    margin-bottom: 32px;
+    box-shadow: 0 8px 28px rgba(120, 120, 180, 0.08);
+}
+
+.plot-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(120, 120, 180, 0.13);
+    border-color: #4a90e2;
+    background: rgba(255, 255, 255, 1);
+}
+
+.plot-card h6 {
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: #495057;
+    font-size: 1.1rem;
+}
+
+.plot-image {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    height: auto;
+}
+
+.feature-icon {
+    color: #4a90e2;
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.section-title {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.auto-populated {
+    background-color: rgba(74, 144, 226, 0.1) !important;
+    border-color: #4a90e2 !important;
+    transition: all 0.3s ease;
+}
+
+.auto-populated:focus {
+    border-color: #357abd !important;
+    box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25) !important;
+}
+
+/* Badge styling for key features */
+.badge {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.badge.bg-primary {
+    background: linear-gradient(135deg, #4a90e2, #357abd) !important;
+}
+
+.badge.bg-success {
+    background: linear-gradient(135deg, #50c878, #20b2aa) !important;
+}
+
+.badge.bg-info {
+    background: linear-gradient(135deg, #4a90e2, #20b2aa) !important;
+}
+
+.badge.bg-warning {
+    background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+}
+
+.badge.bg-danger {
+    background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+}
+
+.badge.bg-dark {
+    background: linear-gradient(135deg, #2c3e50, #34495e) !important;
+}
+
+/* Container and responsive improvements */
+.container {
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Add breathing space between major sections */
+.container > .row:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+/* Table responsiveness */
+.table-responsive {
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Additional spacing and layout improvements */
+.row.mb-4 {
+    margin-bottom: 3rem !important;
+}
+
+.col-md-3.text-center.mb-3 {
+    margin-bottom: 2rem !important;
+}
+
+/* Section wrapper for better spacing */
+.section-wrapper {
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+/* Professional typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading states and animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .header-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .form-section {
+        padding: 30px 20px;
+    }
+    
+    .metric-value {
+        font-size: 1.8rem;
+    }
+    
+    .performance-section {
+        padding: 30px 20px;
+    }
+    
+    .plot-card {
+        margin-bottom: 15px;
+    }
+}

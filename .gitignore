@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Ignore model outputs and data not needed for deployment
+*.log
+*.tmp
+
+# Ignore large raw datasets if not needed for app
+# Uncomment the next line if Salary_Data.csv is not needed for the web app
+# Salary_Data.csv
+
+# Ignore notebook outputs if not needed for deployment
+# Uncomment the next line if Employee_Salary_Prediction.ipynb is not needed for the web app
+# Employee_Salary_Prediction.ipynb
+
+# Ignore backup files
+*.bak
+*.swp
+*.swo
+
+# Ignore test files if any
+test_*.py
+
+
+# Ignore web_app_assets if not needed
+# Uncomment if you don't want to upload web_app_assets
+# web_app_assets/
+
+# Ignore image files not needed for the web app
+# Uncomment if not needed
+# *.jpg
+
+# Allow static, templates, models, and web_app_assets (needed for app)
+!static/
+!templates/
+!models/
+!web_app_assets/
