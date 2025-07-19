@@ -49,4 +49,4 @@ This project is an AI/ML-powered web application for predicting employee salarie
 ## Notes
 
 - Make sure the `models/`, `static/`, `templates/`, and `web_app_assets/` folders are present and contain the necessary files.
-- The app will load the trained model and
+- The app will load the trained model
