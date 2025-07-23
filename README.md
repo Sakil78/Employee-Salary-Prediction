@@ -1,4 +1,10 @@
 # Employee Salary Prediction (Flask Web App)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.3-000000?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
+[![Pandas](https://img.shields.io/badge/Pandas-1.5-150458?style=for-the-badge&logo=pandas)](https://pandas.pydata.org/)
+[![Scikit‑learn](https://img.shields.io/badge/scikit--learn-1.3-F7931E?style=for-the-badge&logo=scikit-learn)](https://scikit-learn.org/)
+[![Random Forest](https://img.shields.io/badge/Random%20Forest-v1.0-green)](https://www.randomforest.se/en/)
+[![XGBoost](https://img.shields.io/badge/XGBoost-1.7-00639C?style=for-the-badge&logo=xgboost)](https://xgboost.ai/)
 
 This project is an AI/ML-powered web application for predicting employee salaries based on various features such as age, experience, job type, and more. It uses a Random Forest model trained on real-world data and provides interactive visualizations and evaluation metrics.
 
