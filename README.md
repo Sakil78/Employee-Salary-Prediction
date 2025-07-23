@@ -1,25 +1,32 @@
 # Employee Salary Prediction (Flask Web App)
+
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-2.3-000000?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com/)
 [![Pandas](https://img.shields.io/badge/Pandas-1.5-150458?style=for-the-badge&logo=pandas)](https://pandas.pydata.org/)
-[![Scikit‑learn](https://img.shields.io/badge/scikit--learn-1.3-F7931E?style=for-the-badge&logo=scikit-learn)](https://scikit-learn.org/)
-[![Random Forest](https://img.shields.io/pypi/v/scikit-learn?label=Random%20Forest&style=for-the-badge&logo=scikit-learn)](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--Learn-1.3-F7931E?style=for-the-badge&logo=scikit-learn)](https://scikit-learn.org/)
+[![Random Forest](https://img.shields.io/badge/Random%20Forest-v1.0-green?style=for-the-badge)](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
 [![XGBoost](https://img.shields.io/badge/XGBoost-1.7-00639C?style=for-the-badge&logo=xgboost)](https://xgboost.ai/)
 
-This project is an AI/ML-powered web application for predicting employee salaries based on various features such as age, experience, job type, and more. It uses a Random Forest model trained on real-world data and provides interactive visualizations and evaluation metrics.
+> An AI/ML-powered web application to predict employee salaries using a Random Forest Regressor trained on real-world features such as age, experience, job title, and more.
+
+---
 
 ## ✨ Key Features
 
-- **Real‑Time Salary Prediction**  
-  Low‑latency inference (<500 ms) across ~10K employee records.
+- **Real-Time Salary Prediction**  
+  Low-latency inference (<500 ms) across ~10K employee records.
+
 - **Robust Preprocessing Pipeline**  
-  Categorical encoding & scaling pipeline built with Pandas and scikit‑learn, reducing data prep time by 60%.
-- **High‑Performance Model**  
-  Random Forest regressor tuned via grid search, delivering **R² = 0.921**, **RMSE = Rs. 27,280**, **MAE = Rs. 8,252**.
+  Categorical encoding and scaling using Pandas and scikit-learn, reducing data prep time by 60%.
+
+- **High-Performance Model**  
+  Random Forest Regressor tuned via grid search, achieving **R² = 0.921**, **RMSE = ₹27,280**, **MAE = ₹8,252**.
+
 - **Interactive Visualizations**  
-  Matplotlib‑driven plots for feature importance, residual analysis, and actual vs. predicted salary distributions.
+  Matplotlib-driven plots for feature importance, residuals, and actual vs predicted salaries.
+
 - **CI/CD & Deployment**  
-  Model serialization with Joblib and automated redeployment on Render for 50% higher throughput.
+  Model serialized with Joblib and auto-deployed via Render, delivering 50% higher throughput.
 
 ---
 
@@ -28,7 +35,7 @@ This project is an AI/ML-powered web application for predicting employee salarie
 | Component             | Technology / Library    |
 |-----------------------|-------------------------|
 | **Backend**           | Flask                   |
-| **ML Framework**      | scikit‑learn, XGBoost   |
+| **ML Framework**      | scikit-learn, XGBoost   |
 | **Data Handling**     | Pandas, NumPy           |
 | **Model Persistence** | Joblib                  |
 | **Visualization**     | Matplotlib              |
@@ -36,13 +43,15 @@ This project is an AI/ML-powered web application for predicting employee salarie
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
-- `app.py` – Main Flask application
-- `models/` – Trained model, encoders, and scaler (`*.pkl`)
-- `static/` – CSS, JS, and plot images
-- `templates/` – HTML templates
-- `web_app_assets/` – Model metadata and evaluation data (`*.json`)
+```bash
+├── app.py                    # Main Flask application
+├── models/                   # Trained model, encoders, and scaler (.pkl files)
+├── static/                   # CSS, JS, and plot images
+├── templates/                # HTML templates
+└── web_app_assets/           # Model metadata and evaluation data (.json)
+```
 
 ## 🧠 Machine Learning Pipeline
 
@@ -101,3 +110,4 @@ This project is an AI/ML-powered web application for predicting employee salarie
 
 - Make sure the `models/`, `static/`, `templates/`, and `web_app_assets/` folders are present and contain the necessary files.
 - The app will load the trained model
+- Let me know if you want me to auto-generate this into a `README.md` file or help with your GitHub repo setup.
