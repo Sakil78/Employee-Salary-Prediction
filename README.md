@@ -7,7 +7,7 @@
 [![Random Forest](https://img.shields.io/badge/Random%20Forest-v1.0-green?style=for-the-badge)](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html)
 [![XGBoost](https://img.shields.io/badge/XGBoost-1.7-00639C?style=for-the-badge&logo=xgboost)](https://xgboost.ai/)
 
-- An AI/ML-powered web application to predict employee salaries using a Random Forest Regressor trained on real-world features such as age, experience, job title, and more.
+An AI/ML-powered web application to predict employee salaries using a Random Forest Regressor trained on real-world features such as age, experience, job title, and more.
 
 ---
 
@@ -110,4 +110,7 @@
 
 - Make sure the `models/`, `static/`, `templates/`, and `web_app_assets/` folders are present and contain the necessary files.
 - The app will load the trained model
-- Let me know if you want me to auto-generate this into a `README.md` file or help with your GitHub repo setup.
+
+## 📬 Feedback
+If you find this project useful or interesting, consider starring ⭐ the repo and sharing feedback!
+Let me know if you want me to auto-generate this into a `README.md` file or help with your GitHub repo setup.
